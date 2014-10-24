@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 
 import android.text.Html;
 
+import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
 
 import android.util.Log;
@@ -26,6 +27,7 @@ public class CustomTextView extends TextView {
     private Boolean mIsHTML = false;
     private Boolean mCapitalize = false;
     private String mCustomFontFile = null;
+    private Boolean mHasLink = false;
 
     // </editor-fold>
 
@@ -63,6 +65,7 @@ public class CustomTextView extends TextView {
                 mAllCaps = a.getBoolean(R.styleable.CustomTextView_uppercase, false);
                 mCapitalize = a.getBoolean(R.styleable.CustomTextView_capitalize, false);
                 mIsHTML = a.getBoolean(R.styleable.CustomTextView_isHtml, false);
+                mHasLink = a.getBoolean(R.styleable.CustomTextView_hasLink, false);
                 a.recycle();
             }
         }
@@ -98,6 +101,8 @@ public class CustomTextView extends TextView {
             text = text.toString().toUpperCase();
         if (mIsHTML != null && mIsHTML && text != null)
             text = Html.fromHtml(text.toString());
+        if (mHasLink != null && mHasLink)
+            setMovementMethod(LinkMovementMethod.getInstance());
         super.setText(text, type);
     }
 

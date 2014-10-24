@@ -5,12 +5,14 @@
     <attr name="uppercase" format="boolean"/>
     <attr name="capitalize" format="boolean"/>
     <attr name="isHtml" format="boolean"/>
+    <attr name="hasLink" format="boolean"/>
 
     <declare-styleable name="CustomTextView">
         <attr name="customFontFile"/>
         <attr name="uppercase"/>
         <attr name="capitalize"/>
         <attr name="isHtml"/>
+        <attr name="hasLink"/>
     </declare-styleable>
 
     <declare-styleable name="CustomEditText">
