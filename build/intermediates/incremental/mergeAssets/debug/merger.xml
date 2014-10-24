@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/baloo/Work/Baloomba/ui_lib/src/main/assets" >
+            <file
+                name="fonts/FreigSanProBold.otf"
+                path="/Users/baloo/Work/Baloomba/ui_lib/src/main/assets/fonts/FreigSanProBold.otf" />
+            <file
+                name="fonts/FreigSanProBook.otf"
+                path="/Users/baloo/Work/Baloomba/ui_lib/src/main/assets/fonts/FreigSanProBook.otf" />
+            <file
+                name="fonts/FreigSanProBookIt.otf"
+                path="/Users/baloo/Work/Baloomba/ui_lib/src/main/assets/fonts/FreigSanProBookIt.otf" />
+            <file
+                name="fonts/FreigSanProLig.otf"
+                path="/Users/baloo/Work/Baloomba/ui_lib/src/main/assets/fonts/FreigSanProLig.otf" />
+            <file
+                name="fonts/FreigSanProLigIt.otf"
+                path="/Users/baloo/Work/Baloomba/ui_lib/src/main/assets/fonts/FreigSanProLigIt.otf" />
+            <file
+                name="fonts/FreigSanProMed.otf"
+                path="/Users/baloo/Work/Baloomba/ui_lib/src/main/assets/fonts/FreigSanProMed.otf" />
+            <file
+                name="fonts/Museo_Slab.otf"
+                path="/Users/baloo/Work/Baloomba/ui_lib/src/main/assets/fonts/Museo_Slab.otf" />
+            <file
+                name="fonts/Museo_SlabBold.otf"
+                path="/Users/baloo/Work/Baloomba/ui_lib/src/main/assets/fonts/Museo_SlabBold.otf" />
+        </source>
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/baloo/Work/Baloomba/ui_lib/src/debug/assets" />
+    </dataSet>
+
+</merger>

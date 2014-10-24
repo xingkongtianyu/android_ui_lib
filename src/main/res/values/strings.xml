@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:xliff="rn:oasis:names:tc:xliff:document:1.2"
+    tools:ignore="Typos,ButtonCase">
+    <string name="Ago"><xliff:g id="id">%s</xliff:g> ago</string>
+    <string name="Year">year</string>
+    <string name="Years">years</string>
+    <string name="Month">month</string>
+    <string name="Months">months</string>
+    <string name="Week">week</string>
+    <string name="Weeks">weeks</string>
+    <string name="Day">day</string>
+    <string name="Days">days</string>
+    <string name="Hour">hour</string>
+    <string name="Hours">hours</string>
+    <string name="Minute">minute</string>
+    <string name="Minutes">minutes</string>
+    <string name="Second">second</string>
+    <string name="Seconds">seconds</string>
+</resources>

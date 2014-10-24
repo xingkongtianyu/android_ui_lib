@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="rn:oasis:names:tc:xliff:document:1.2">
+    <string name="Ago">Il y a <xliff:g id="id" >%s</xliff:g></string>
+    <string name="Year">an</string>
+    <string name="Years">ans</string>
+    <string name="Month">mois</string>
+    <string name="Months">mois</string>
+    <string name="Week">semaine</string>
+    <string name="Weeks">semaines</string>
+    <string name="Day">jour</string>
+    <string name="Days">jours</string>
+    <string name="Hour">heure</string>
+    <string name="Hours">heures</string>
+    <string name="Minute">minute</string>
+    <string name="Minutes">minutes</string>
+    <string name="Second">seconde</string>
+    <string name="Seconds">secondes</string>
+ </resources>

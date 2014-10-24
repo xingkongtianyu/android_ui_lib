@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="customFontFile" format="string"/>
+    <attr name="uppercase" format="boolean"/>
+    <attr name="capitalize" format="boolean"/>
+    <attr name="isHtml" format="boolean"/>
+
+    <declare-styleable name="CustomTextView">
+        <attr name="customFontFile"/>
+        <attr name="uppercase"/>
+        <attr name="capitalize"/>
+        <attr name="isHtml"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomEditText">
+        <attr name="customFontFile"/>
+        <attr name="uppercase"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomButton">
+        <attr name="customFontFile"/>
+        <attr name="uppercase"/>
+    </declare-styleable>
+
+    <attr name="head" format="string" />
+    <attr name="body" format="string" />
+    <attr name="transparentBackground" format="boolean" />
+    <declare-styleable name="CustomWebView">
+        <attr name="head"/>
+        <attr name="body"/>
+        <attr name="transparentBackground"/>
+    </declare-styleable>
+
+    <attr name="use_ratio" format="boolean"/>
+    <attr name="corner_radius" format="dimension"/>
+    <attr name="border_width" format="dimension"/>
+    <attr name="border_color" format="color"/>
+    <attr name="round_background" format="boolean"/>
+    <attr name="is_oval" format="boolean"/>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="corner_radius"/>
+        <attr name="border_width"/>
+        <attr name="border_color"/>
+        <attr name="round_background"/>
+        <attr name="is_oval"/>
+        <attr name="android:scaleType"/>
+    </declare-styleable>
+
+    <declare-styleable name="RatioImageView">
+        <attr name="use_ratio" />
+    </declare-styleable>
+
+    <attr name="animation" format="integer"/>
+
+    <declare-styleable name="Loader">
+        <attr name="animation" />
+    </declare-styleable>
+
+</resources>
