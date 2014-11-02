@@ -119,4 +119,18 @@ public class SharedPreferencesHelper {
 
     //</editor-fold>
 
+    // <editor-fold desc="REMOVE METHODS">
+
+    public static void remove(Context context, String name, String key) {
+        if (context.getApplicationContext() == null)
+            return;
+        SharedPreferences.Editor editor = context.getApplicationContext()
+                .getSharedPreferences(name, Context.MODE_PRIVATE).edit();
+        editor.remove(key);
+//        editor.commit();
+        editor.apply();
+    }
+
+    // </editor-fold>
+
 }
