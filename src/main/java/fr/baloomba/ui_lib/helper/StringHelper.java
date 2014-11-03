@@ -1,5 +1,8 @@
 package fr.baloomba.ui_lib.helper;
 
+import android.content.Context;
+import android.content.res.Resources;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -74,6 +77,12 @@ public class StringHelper {
     public static String escape(String string) {
         string = string.replace("<3", "&#9829;");
         return string;
+    }
+
+    public static String getStringResource(Context context, String key) {
+        int resId = context.getResources().getIdentifier(key, "string", context.getPackageName());
+        if (resId <= 0) throw new Resources.NotFoundException();
+        return context.getString(resId);
     }
 
 }
