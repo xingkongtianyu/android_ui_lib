@@ -7,9 +7,6 @@ import android.content.res.TypedArray;
 
 import android.graphics.Typeface;
 
-import android.text.Html;
-
-import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
 
 import android.util.Log;
@@ -18,10 +15,13 @@ import android.widget.TextView;
 import java.io.IOException;
 
 import fr.baloomba.ui_lib.R;
+import fr.baloomba.ui_lib.helper.ViewHelper;
 
 public class CustomTextView extends TextView {
 
     // <editor-fold desc="VARIABLES">
+
+    private Context mContext;
 
     private Boolean mAllCaps = false;
     private Boolean mIsHTML = false;
@@ -33,47 +33,137 @@ public class CustomTextView extends TextView {
 
     // <editor-fold desc="CONSTRUCTORS">
 
-    public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        init(context, attrs, defStyle);
+    public CustomTextView(Context context) {
+        super(context);
+        initCustomTextView(context);
     }
 
     public CustomTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context, attrs, 0);
+        initCustomTextView(context);
+        initCustomTextViewFromAttributes(context, attrs);
     }
 
-    public CustomTextView(Context context) {
-        super(context);
-        init(context, null, 0);
+    public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        initCustomTextView(context);
+        initCustomTextViewFromAttributes(context, attrs);
+    }
+
+    // </editor-fold>
+
+    // <editor-fold desc="TEXT VIEW OVERRIDDEN METHODS">
+
+//    @Override
+//    public void setText(CharSequence text, BufferType type) {
+//        if (mCapitalize != null && mCapitalize && text != null && text.length() > 1)
+//            text = Character.toUpperCase(text.charAt(0)) + text.toString().substring(1);
+//        if (mAllCaps != null && mAllCaps && text != null)
+//            text = text.toString().toUpperCase();
+//        if (mIsHTML != null && mIsHTML && text != null)
+//            text = Html.fromHtml(text.toString());
+//        if (mHasLink != null && mHasLink)
+//            setMovementMethod(LinkMovementMethod.getInstance());
+//        super.setText(text, type);
+//    }
+
+//    @Override
+//    public CharSequence getText() {
+//        CharSequence charSequence = super.getText();
+//        return (mAllCaps && charSequence != null) ? charSequence.toString().toUpperCase() : charSequence;
+//    }
+
+    // </editor-fold>
+
+    // <editor-fold desc="SETTERS">
+
+    @Override
+    public void setAllCaps(boolean allCaps) {
+        mAllCaps = allCaps;
+        setText(getText());
+    }
+
+    public void setCapitalize(Boolean capitalize) {
+        mCapitalize = capitalize;
+        setText(getText());
+    }
+
+    public void setIsHTML(Boolean isHTML) {
+        mIsHTML = isHTML;
+        setText(getText());
+    }
+
+    public void setHasLink(Boolean hasLink) {
+        mHasLink = hasLink;
+        setText(getText());
+    }
+
+    public void setCustomFontFile(String customFontFile) {
+        mCustomFontFile = customFontFile;
+        if (mCustomFontFile != null) {
+            try {
+                Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/" + mCustomFontFile);
+                setTypeface(tf);
+                invalidate();
+            } catch (Exception ignored) {}
+        }
+    }
+
+    public void setEnable(boolean enable) {
+        ViewHelper.setAlpha(this, .5f);
+    }
+
+    // </editor-fold>
+
+    // <editor-fold desc="GETTERS">
+
+    public Boolean getAllCaps() {
+        return mAllCaps;
+    }
+
+    public Boolean getCapitalize() {
+        return mCapitalize;
+    }
+
+    public Boolean getIsHTML() {
+        return mIsHTML;
+    }
+
+    public Boolean getHasLink() {
+        return mHasLink;
+    }
+
+    public String getCustomFontFile() {
+        return mCustomFontFile;
     }
 
     // </editor-fold>
 
     // <editor-fold desc="METHODS">
 
-    public void init(Context context, AttributeSet attrs, int defStyle) {
+    private void initCustomTextView(Context context) {
+        mContext = context;
+    }
 
-        displayAvailableFonts();
+    private void initCustomTextViewFromAttributes(Context context, AttributeSet attrs) {
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomTextView);
 
-        String customFontFile = null;
-        if (attrs != null) {
-            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomTextView,
-                    defStyle, 0);
-            if (a != null) {
-                customFontFile = a.getString(R.styleable.CustomTextView_customFontFile);
-                mAllCaps = a.getBoolean(R.styleable.CustomTextView_uppercase, false);
-                mCapitalize = a.getBoolean(R.styleable.CustomTextView_capitalize, false);
-                mIsHTML = a.getBoolean(R.styleable.CustomTextView_isHtml, false);
-                mHasLink = a.getBoolean(R.styleable.CustomTextView_hasLink, false);
-                a.recycle();
+        final int N = a.getIndexCount();
+        for (int i = 0; i < N; i++) {
+            int attr = a.getIndex(i);
+            if (attr == R.styleable.CustomTextView_customFontFile) {
+                setCustomFontFile(a.getString(attr));
+            } else if (attr == R.styleable.CustomTextView_uppercase) {
+                setAllCaps(a.getBoolean(attr, false));
+            } else if (attr == R.styleable.CustomTextView_capitalize) {
+                setCapitalize(a.getBoolean(attr, false));
+            } else if (attr == R.styleable.CustomTextView_isHtml) {
+                setIsHTML(a.getBoolean(attr, false));
+            } else if (attr == R.styleable.CustomTextView_hasLink) {
+                setIsHTML(a.getBoolean(attr, false));
             }
         }
-        if (customFontFile != null) {
-            Typeface tf = Typeface.createFromAsset(context.getAssets(), "fonts/" + customFontFile);
-            setTypeface(tf);
-        }
-        setText(getText());
+//        setText(getText());
     }
 
     public void displayAvailableFonts() {
@@ -87,23 +177,6 @@ public class CustomTextView extends TextView {
         } catch (IOException e) {
             Log.e("", e.getMessage());
         }
-    }
-
-    // </editor-fold>
-
-    // <editor-fold desc="TEXT VIEW OVERRIDDEN METHODS">
-
-    @Override
-    public void setText(CharSequence text, BufferType type) {
-        if (mCapitalize != null && mCapitalize && text != null && text.length() > 1)
-            text = Character.toUpperCase(text.charAt(0)) + text.toString().substring(1);
-        if (mAllCaps != null && mAllCaps && text != null)
-            text = text.toString().toUpperCase();
-        if (mIsHTML != null && mIsHTML && text != null)
-            text = Html.fromHtml(text.toString());
-        if (mHasLink != null && mHasLink)
-            setMovementMethod(LinkMovementMethod.getInstance());
-        super.setText(text, type);
     }
 
     // </editor-fold>

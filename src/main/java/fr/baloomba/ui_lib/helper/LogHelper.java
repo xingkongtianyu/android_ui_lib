@@ -1,7 +1,6 @@
 package fr.baloomba.ui_lib.helper;
 
 import android.util.Log;
-
 import fr.baloomba.ui_lib.BuildConfig;
 
 public class LogHelper {
@@ -27,7 +26,7 @@ public class LogHelper {
     }
 
     public static void log(int logMode, String tag, String message) {
-        tag = BuildConfig.PACKAGE_NAME + ":" + tag;
+        tag = BuildConfig.APPLICATION_ID + ":" + tag;
         message = ((message == null) ? "[LOGGER MESSAGE] - null" : ((message.length() > 0) ?
                 message : "[LOGGER MESSAGE] - Empty log string"));
         switch (logMode) {
