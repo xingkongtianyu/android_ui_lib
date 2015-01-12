@@ -2,6 +2,7 @@ package fr.baloomba.ui_lib.helper;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -13,6 +14,8 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class StringHelper {
+
+    private static final String TAG = StringHelper.class.getSimpleName();
 
     public static String md5(String s) {
         MessageDigest digest;
@@ -81,7 +84,11 @@ public class StringHelper {
 
     public static String getStringResource(Context context, String key) {
         int resId = context.getResources().getIdentifier(key, "string", context.getPackageName());
-        if (resId <= 0) throw new Resources.NotFoundException();
+        if (resId <= 0) {
+            Log.e(TAG, key);
+//            throw new Resources.NotFoundException();
+            return key;
+        }
         return context.getString(resId);
     }
 

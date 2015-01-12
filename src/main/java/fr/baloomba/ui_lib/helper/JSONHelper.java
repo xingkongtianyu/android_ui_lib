@@ -4,6 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class JSONHelper {
 
     public static Object get(JSONObject object, String key) throws JSONException {
@@ -48,6 +51,20 @@ public class JSONHelper {
         if (object != null && object.has(key) && !object.isNull(key))
             string = object.getString(key);
         return string;
+    }
+
+    public static Collection<String> getStringArray(JSONObject object, String key)
+            throws JSONException {
+        Collection<String> stringArray = new ArrayList<>();
+        if (object != null && object.has(key) && !object.isNull(key)) {
+            JSONArray array = getJSONArray(object, key);
+            if (array != null) {
+                for (int i = 0; i < array.length(); i++) {
+                    stringArray.add(array.getString(i));
+                }
+            }
+        }
+        return stringArray;
     }
 
     public static Boolean getBoolean(JSONObject object, String key) throws JSONException {
