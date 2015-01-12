@@ -4,12 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.widget.ImageView;
 
 import fr.baloomba.ui_lib.R;
 
-public class RatioImageView extends ImageView {
+public class RatioImageView extends android.widget.ImageView {
 
     // <editor-fold desc="VARIABLES">
 

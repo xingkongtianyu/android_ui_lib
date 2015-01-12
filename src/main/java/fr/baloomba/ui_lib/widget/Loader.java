@@ -2,15 +2,13 @@ package fr.baloomba.ui_lib.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ProgressBar;
 
 import fr.baloomba.ui_lib.R;
 
-public class Loader extends ProgressBar {
+public class Loader extends android.widget.ProgressBar {
 
     // <editor-fold desc="VARIABLES">
 

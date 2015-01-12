@@ -15,9 +15,9 @@ import fr.baloomba.ui_lib.listener.OnGestureListener;
 
 public class DoubleTapNetworkImageView extends NetworkImageView {
 
-    // <editor-fold desc="VARIABLES">
-
     private static final String TAG = DoubleTapNetworkImageView.class.getSimpleName();
+
+    // <editor-fold desc="VARIABLES">
 
     private GestureDetectorCompat mGestureDetector;
     private OnGestureListener mListener;
@@ -52,7 +52,6 @@ public class DoubleTapNetworkImageView extends NetworkImageView {
 
     // <editor-fold desc="NETWORK IMAGE VIEW OVERRIDDEN METHODS">
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public boolean onTouchEvent(MotionEvent e) {
         return mGestureDetector.onTouchEvent(e);
@@ -71,7 +70,7 @@ public class DoubleTapNetworkImageView extends NetworkImageView {
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
             if (mListener == null)
-                return false;
+                return callOnClick();
 //                throw new NullPointerException("DoubleTapImageView needs OnGestureListener");
             return mListener.onSingleTapConfirmed(e);
         }
@@ -79,7 +78,7 @@ public class DoubleTapNetworkImageView extends NetworkImageView {
         @Override
         public boolean onDoubleTap(MotionEvent e) {
             if (mListener == null)
-                return false;
+                return callOnClick();
 //                throw new NullPointerException("DoubleTapImageView needs OnGestureListener");
             return mListener.onDoubleTap(e);
         }

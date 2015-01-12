@@ -1,7 +1,9 @@
 package fr.baloomba.ui_lib.helper;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 

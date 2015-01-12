@@ -5,12 +5,9 @@ import android.content.res.TypedArray;
 
 import android.util.AttributeSet;
 
-import android.util.Log;
-import android.webkit.WebView;
-
 import fr.baloomba.ui_lib.R;
 
-public class CustomWebView extends WebView {
+public class WebView extends android.webkit.WebView {
 
     // <editor-fold desc="VARIABLES">
 
@@ -22,18 +19,23 @@ public class CustomWebView extends WebView {
 
     // <editor-fold desc="CONSTRUCTORS">
 
-    public CustomWebView(Context context) {
+    public WebView(Context context) {
         super(context);
+        init(context);
         init(context, null, 0);
     }
 
-    public CustomWebView(Context context, AttributeSet attrs) {
+    public WebView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+        initWithAttributes(context, attrs);
         init(context, attrs, 0);
     }
 
-    public CustomWebView(Context context, AttributeSet attrs, int defStyle) {
+    public WebView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        init(context);
+        initWithAttributes(context, attrs);
         init(context, attrs, defStyle);
     }
 
@@ -55,14 +57,20 @@ public class CustomWebView extends WebView {
 
     // <editor-fold desc="METHODS">
 
+    protected void init(Context context) {}
+
+    protected void initWithAttributes(Context context, AttributeSet attrs) {
+
+    }
+
     protected void init(Context context, AttributeSet attrs, int defStyle) {
         if (attrs != null) {
-            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomWebView,
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.WebView,
                     defStyle, 0);
             if (a != null) {
-                mContentHead = a.getString(R.styleable.CustomWebView_head);
-                mContentBody = a.getString(R.styleable.CustomWebView_body);
-                mTransparentBackground = a.getBoolean(R.styleable.CustomWebView_transparentBackground, false);
+                mContentHead = a.getString(R.styleable.WebView_head);
+                mContentBody = a.getString(R.styleable.WebView_body);
+                mTransparentBackground = a.getBoolean(R.styleable.WebView_transparentBackground, false);
                 a.recycle();
             }
         }
@@ -70,9 +78,10 @@ public class CustomWebView extends WebView {
     }
 
     public void fill() {
-        String content = "<!DOCTYPE html><html>" +
-        "<head>" + mContentHead + "</head>" + "<body>" + mContentBody + "</body>" + "</html>";
-
+        String content = "<!DOCTYPE html><html>";
+        if (mContentHead != null)
+            content += "<head>" + mContentHead + "</head>";
+        content += "<body>" + mContentBody + "</body>" + "</html>";
         loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
         if (mTransparentBackground)
             setBackgroundColor(0x00000000);

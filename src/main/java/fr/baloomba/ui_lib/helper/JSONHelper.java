@@ -1,5 +1,7 @@
 package fr.baloomba.ui_lib.helper;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,6 +11,8 @@ import java.util.Collection;
 
 public class JSONHelper {
 
+    private static final String TAG = JSONHelper.class.getSimpleName();
+    
     public static Object get(JSONObject object, String key) throws JSONException {
         Object obj = null;
         if (object != null && object.has(key) && !object.isNull(key))
@@ -125,6 +129,32 @@ public class JSONHelper {
         if (object != null && object.has(key) && !object.isNull(key))
             l = object.getLong(key);
         return l;
+    }
+    
+    public static Float getFloat(JSONObject object, String key) throws JSONException {
+        Float f = 0f;
+        if (object != null && object.has(key) && !object.isNull(key)) {
+            String string = object.getString(key);
+            try {
+                f = Float.parseFloat(string);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, e.getMessage());
+            }
+        }
+        return f;
+    }
+    
+    public static Float getFloat(JSONObject object, String key, Float defaultValue) throws JSONException {
+        Float f = defaultValue;
+        if (object != null && object.has(key) && !object.isNull(key)) {
+            String string = object.getString(key);
+            try {
+                f = Float.parseFloat(string);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, e.getMessage());
+            }
+        }
+        return f;
     }
 
 }

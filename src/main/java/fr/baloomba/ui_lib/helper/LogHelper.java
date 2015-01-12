@@ -1,7 +1,6 @@
 package fr.baloomba.ui_lib.helper;
 
 import android.util.Log;
-
 import fr.baloomba.ui_lib.BuildConfig;
 
 public class LogHelper {
