@@ -7,15 +7,13 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 import fr.baloomba.ui_lib.R;
 
-public class RoundedImageView extends ImageView {
+public class RoundedImageView extends android.widget.ImageView {
 
     // <editor-fold desc="VARIABLES">
 
-//    public static final String TAG = "RoundedFadedNetworkImageView";
     public static final int DEFAULT_RADIUS = 0;
     public static final int DEFAULT_BORDER_WIDTH = 0;
     private static final ScaleType[] sScaleTypeArray = {

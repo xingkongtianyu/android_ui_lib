@@ -5,7 +5,7 @@ buildscript {
 
     dependencies {
         classpath ANDROID_GRADLE_TOOLS
-        classpath 'com.github.dcendents:android-maven-plugin:1.0'
+        classpath GRADLE_MAVEN_PLUGIN
     }
 }
 
@@ -27,7 +27,7 @@ dependencies {
     compile ANDROID_SUPPORT_APPCOMPAT_V7
 
     // PROJECT DEPENDENCIES
-    compile ('fr.baloomba:wsvolley:1.1.1')
+    compile BALOOMBA_WSVOLLEY
 }
 
 android {
@@ -52,7 +52,7 @@ android {
 }
 
 group = 'fr.baloomba'
-version = '0.1.0'
+version = '0.1.2'
 
 signing {
     required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
@@ -62,11 +62,15 @@ signing {
 uploadArchives {
     configuration = configurations.archives
     repositories.mavenDeployer {
-        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+        beforeDeployment {
+            MavenDeployment deployment -> signing.signPom(deployment)
+        }
 
         repository(url: sonatypeRepo) {
-            authentication(userName: sonatypeUsername,
-                    password: sonatypePassword)
+            authentication(
+                    userName: sonatypeUsername,
+                    password: sonatypePassword
+            )
         }
 
         pom.artifactId = 'ui_lib'

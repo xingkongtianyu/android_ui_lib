@@ -3,9 +3,8 @@ package fr.baloomba.ui_lib.widget;
 import android.content.Context;
 import android.graphics.*;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
-public class BlurryImageView extends ImageView {
+public class BlurryImageView extends android.widget.ImageView {
 
     // <editor-fold desc="VARIABLES">
 

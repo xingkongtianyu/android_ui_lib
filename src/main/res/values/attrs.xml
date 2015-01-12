@@ -7,7 +7,7 @@
     <attr name="isHtml" format="boolean"/>
     <attr name="hasLink" format="boolean"/>
 
-    <declare-styleable name="CustomTextView">
+    <declare-styleable name="TextView">
         <attr name="customFontFile"/>
         <attr name="uppercase"/>
         <attr name="capitalize"/>
@@ -15,12 +15,31 @@
         <attr name="hasLink"/>
     </declare-styleable>
 
-    <declare-styleable name="CustomEditText">
+    <declare-styleable name="EditText">
+        <attr name="customFontFile"/>
+    </declare-styleable>
+
+    <declare-styleable name="Button">
         <attr name="customFontFile"/>
         <attr name="uppercase"/>
     </declare-styleable>
 
-    <declare-styleable name="CustomButton">
+    <declare-styleable name="RadioButton">
+        <attr name="customFontFile"/>
+        <attr name="uppercase"/>
+    </declare-styleable>
+
+    <declare-styleable name="CompoundButton">
+        <attr name="customFontFile"/>
+        <attr name="uppercase"/>
+    </declare-styleable>
+
+    <declare-styleable name="CheckBox">
+        <attr name="customFontFile"/>
+        <attr name="uppercase"/>
+    </declare-styleable>
+
+    <declare-styleable name="Switch">
         <attr name="customFontFile"/>
         <attr name="uppercase"/>
     </declare-styleable>
@@ -28,7 +47,7 @@
     <attr name="head" format="string" />
     <attr name="body" format="string" />
     <attr name="transparentBackground" format="boolean" />
-    <declare-styleable name="CustomWebView">
+    <declare-styleable name="WebView">
         <attr name="head"/>
         <attr name="body"/>
         <attr name="transparentBackground"/>
